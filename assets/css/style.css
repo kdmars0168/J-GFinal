@@ -1304,6 +1304,10 @@ a {
   /**
    * CUSTOM PROPERTY
    */
+   .service,
+  .features {
+    flex-direction: column; /* Stack items vertically on small screens */
+  }
 
   :root {
     /**
