@@ -692,25 +692,55 @@ a {
   padding-block: var(--section-padding);
 }
 
+.property-list {
+  display: flex;
+  flex-wrap: nowrap; /* Ensure cards are in a single row */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  margin-bottom: -15px; /* Overlap between cards */
+}
+
 .property-card {
+  flex: 0 0 auto; /* Prevent flex items from shrinking */
+  margin-right: 5px; /* Reduced spacing between cards */
+  margin-left: -10px; /* Added left margin to show a bit of neighboring card */
+  position: relative;
   border: 1px solid var(--alice-blue);
   box-shadow: var(--shadow-2);
+}
+
+/* Add a subtle shadow to indicate cards overlap */
+.property-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 5px; /* Width of the overlap */
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.7)
+  );
+  pointer-events: none;
 }
 
 .property-card .card-banner {
   position: relative;
   aspect-ratio: 2 / 1.5;
   overflow: hidden;
+  border-radius: 15px; /* Add border-radius to cards */
 }
 
 .property-card .card-banner a {
   height: 100%;
+  display: block; /* Ensure anchor takes full height */
 }
 
 .property-card .card-banner img {
   height: 100%;
   object-fit: cover;
   transition: 0.5s ease;
+  border-radius: 15px; /* Add border-radius to images */
 }
 
 .property-card:hover .card-banner img {
@@ -1304,6 +1334,10 @@ a {
   /**
    * CUSTOM PROPERTY
    */
+  .service,
+  .features {
+    flex-direction: column; /* Stack items vertically on small screens */
+  }
 
   :root {
     /**
@@ -1860,14 +1894,33 @@ a {
 }
 .unit-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 10px;
+  flex-wrap: nowrap; /* Ensure cards are in a single row */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  margin-bottom: -15px; /* Overlap between cards */
 }
 .unit-card {
-  flex: 1 0 calc(33.33% - 20px); /* Cards take up one-third of the width with 20px gap */
+  flex: 0 0 auto; /* Prevent flex items from shrinking */
+  margin-right: 5px; /* Reduced spacing between cards */
+  margin-left: -10px; /* Added left margin to show a bit of neighboring card */
+  position: relative;
   border: 1px solid var(--alice-blue);
   box-shadow: var(--shadow-2);
+}
+
+/* Add a small shadow to indicate cards overlap */
+.unit-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 5px; /* Width of the overlap */
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.7)
+  );
+  pointer-events: none;
 }
 
 .unit-card .card-banner {
